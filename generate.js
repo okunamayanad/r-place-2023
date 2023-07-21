@@ -11,7 +11,7 @@ Jimp.read('place.png', (err, img) => {
     });
 
     img.scan(0, 0, output.bitmap.width, output.bitmap.height, function (x, y, idx) {
-        var outx = x * 3 - 1, outy = y * 3 - 1;
+        var outx = x * 3 + 1, outy = y * 3 + 1;
         var color = img.getPixelColor(x, y);
 
         output.setPixelColor(color, outx, outy);
