@@ -1,0 +1,30 @@
+name: Generate and Upload Image (for experimental branch)
+
+on:
+  push:
+    branches:
+      - experimental
+
+jobs:
+  generate_and_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate image
+        run: node generate.js
+
+      - name: Check if file exists
+        run: ls output.png
+        continue-on-error: true
+
+      - name: Upload image
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generated output.png
