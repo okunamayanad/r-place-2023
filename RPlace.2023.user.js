@@ -8,6 +8,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        none
 // @license MIT
+// @downloadURL        https://github.com/okunamayanad/r-place-2023/raw/main/RPlace.2023.user.js
+// @updateURL        https://github.com/okunamayanad/r-place-2023/raw/main/RPlace.2023.user.js 
 // ==/UserScript==
 console.log("1");
 if (window.top !== window.self) {
@@ -18,7 +20,7 @@ if (window.top !== window.self) {
     var d = new Date();
     image.src = "https://raw.githubusercontent.com/okunamayanad/r-place-2023/main/output.png?" + d.getTime();
     image.onload = () => {
-        image.style = `position: absolute; left: 0; top: 0; width: ${image.width/3}px; height: ${image.height/3}px; image-rendering: pixelated; z-index: 1`;
+        image.style = `position: absolute; left: 0; top: 0; width: ${image.width / 3}px; height: ${image.height / 3}px; image-rendering: pixelated; z-index: 1`;
     };
 
     // Add the image as overlay
@@ -33,10 +35,10 @@ if (window.top !== window.self) {
     const waitForPreview = setInterval(() => {
         const preview = camera.querySelector("garlic-bread-pixel-preview");
         if (preview) {
-          clearInterval(waitForPreview);
-          const style = document.createElement('style')
-          style.innerHTML = '.pixel { clip-path: polygon(-20% -20%, -20% 120%, 37% 120%, 37% 37%, 62% 37%, 62% 62%, 37% 62%, 37% 120%, 120% 120%, 120% -20%); }'
-          preview.shadowRoot.appendChild(style);
+            clearInterval(waitForPreview);
+            const style = document.createElement('style')
+            style.innerHTML = '.pixel { clip-path: polygon(-20% -20%, -20% 120%, 37% 120%, 37% 37%, 62% 37%, 62% 62%, 37% 62%, 37% 120%, 120% 120%, 120% -20%); }'
+            preview.shadowRoot.appendChild(style);
         }
     }, 100);
 }
