@@ -18,6 +18,10 @@ jobs:
       - name: Generate image
         run: node generate.js
 
+      - name: Check if file exists
+        run: ls output.png
+        continue-on-error: true
+
       - name: Upload image
         uses: actions/upload-artifact@v2
         with:
