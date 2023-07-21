@@ -1,0 +1,48 @@
+name: Generate and Upload Image (for chrome-extension experimental branch)
+
+on:
+  push:
+    branches:
+      - chrome-extension
+
+jobs:
+  generate_and_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate image
+        run: node generate.js
+
+      - name: Check if file exists
+        run: ls output.png
+        continue-on-error: true
+
+      - name: Upload image
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Generated output.png
+  build_chrome_extension:
+    steps:
+    # pack zip and read manifest, can be reused in the following steps
+    - id: packExtensionDir
+      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+      with:
+        extensionDir: 'chrome-extension'
+        zipFilePath: 'build/chrome-extension.zip'
+    
+    - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+      with:
+        # zip file made at the packExtensionDir step
+        zipFilePath: 'build/chrome-extension.zip'
+        crxFilePath: 'build/chrome-extension.crx'
+        privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+        # The following is optional if you need update.xml file
+        # updateXmlPath: 'build/update.xml'
+        # updateXmlCodebaseUrl: 'https://server.com/extension.crx'

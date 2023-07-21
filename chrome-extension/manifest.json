@@ -1,0 +1,21 @@
+{
+  "name": "rPlace 2023 TR Extension",
+  "description": "Turkish Flag & Graphics Overlay for rPlace 2023",
+  "homepage_url": "https://github.com/okunamayanad/r-place-2023",
+  "version": "1.2.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "run_at" : "document_idle",
+      "js": ["script.js"],
+      "matches": [
+        "https://garlic-bread.reddit.com/embed*"
+      ],
+      "all_frames": true
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "scripting"
+  ]
+}
