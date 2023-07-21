@@ -33,6 +33,11 @@ jobs:
         # updateXmlPath: 'build/update.xml'
         # updateXmlCodebaseUrl: 'https://server.com/extension.crx'
     
+    - uses: actions/upload-artifact@v3
+      with:
+        name: chrome-extension
+        path: 'build/chrome-extension.crx'
+
     - name: upload binaries to release
       uses: softprops/action-gh-release@v1
       if: ${{startsWith(github.ref, 'refs/tags/') }}
