@@ -31,6 +31,10 @@ jobs:
   build_chrome_extension:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        sparse-checkout: chrome-extension
     # pack zip and read manifest, can be reused in the following steps
     - id: packExtensionDir
       uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
@@ -43,6 +47,8 @@ jobs:
         # zip file made at the packExtensionDir step
         zipFilePath: 'build/chrome-extension.zip'
         crxFilePath: 'build/chrome-extension.crx'
+        # Create a secret named CHROME_CRX_PRIVATE_KEY in your repository settings
+        # ssh-keygen -t rsa -m PEM
         privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
         # The following is optional if you need update.xml file
         # updateXmlPath: 'build/update.xml'
