@@ -66,3 +66,14 @@ jobs:
       with:
           files: 'build/chrome-extension.zip'
           token: ${{ secrets.PAT }}
+  
+  # Upload the extension to the chrome web store
+  # https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
+  - name: Upload & release
+      uses: mnao305/chrome-extension-upload@v4.0.1
+      with:
+        file-path: 'build/chrome-extension.zip'
+        extension-id: hogefuga(extension id)
+        client-id: ${{ secrets.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        refresh-token: ${{ secrets.REFRESH_TOKEN }}
