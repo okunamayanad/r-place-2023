@@ -14,39 +14,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         sparse-checkout: chrome-extension
-    """
-    Disabled because chrome stopped accepting crx files
-    # pack zip and read manifest, can be reused in the following steps
-    - id: packExtensionDir
-      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
-      with:
-        extensionDir: 'chrome-extension'
-        zipFilePath: 'build/chrome-extension.zip'
-    
-    - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-      with:
-        # zip file made at the packExtensionDir step
-        zipFilePath: 'build/chrome-extension.zip'
-        crxFilePath: 'build/chrome-extension.crx'
-        # Create a secret named CHROME_CRX_PRIVATE_KEY in your repository settings
-        # ssh-keygen -t rsa -m PEM or pack extension with chrome and get private key from the generated .pem file.
-        privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
-        # The following is optional if you need update.xml file
-        # updateXmlPath: 'build/update.xml'
-        # updateXmlCodebaseUrl: 'https://server.com/extension.crx'
-    
-    - uses: actions/upload-artifact@v3
-      with:
-        name: chrome-extension
-        path: 'build/chrome-extension.crx'
-
-    - name: upload binaries to release
-      uses: softprops/action-gh-release@v1
-      if: ${{startsWith(github.ref, 'refs/tags/') }}
-      with:
-          files: 'build/chrome-extension.crx'
-          token: ${{ secrets.PAT }}
-  """
   # Zip the extension
   - name: Zip extension
     run: |
