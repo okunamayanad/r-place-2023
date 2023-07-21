@@ -1,33 +1,12 @@
-name: Generate and Upload Image (for chrome-extension experimental branch)
+name: Build Chrome Extension & Upload it to Latest Release (for chrome-extension experimental branch)
 
 on:
   push:
     branches:
       - chrome-extension
-
+    tags:
+      - '**'
 jobs:
-  generate_and_upload:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Generate image
-        run: node generate.js
-
-      - name: Check if file exists
-        run: ls output.png
-        continue-on-error: true
-
-      - name: Upload image
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Generated output.png
   build_chrome_extension:
     runs-on: ubuntu-latest
     steps:
@@ -53,3 +32,9 @@ jobs:
         # The following is optional if you need update.xml file
         # updateXmlPath: 'build/update.xml'
         # updateXmlCodebaseUrl: 'https://server.com/extension.crx'
+    
+    - name: upload binaries to release
+      uses: softprops/action-gh-release@v1
+      if: ${{startsWith(github.ref, 'refs/tags/') }}
+      with:
+          files: 'build/chrome-extension.crx'
