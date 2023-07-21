@@ -17,6 +17,7 @@ jobs:
     # Zip the extension
     - name: Zip extension
       run: |
+        mkdir build
         cd chrome-extension
         zip -r ../build/chrome-extension.zip *
       working-directory: ${{ github.workspace }}
