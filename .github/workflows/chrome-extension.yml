@@ -29,6 +29,7 @@ jobs:
         with:
           commit_message: Generated output.png
   build_chrome_extension:
+    runs-on: ubuntu-latest
     steps:
     # pack zip and read manifest, can be reused in the following steps
     - id: packExtensionDir
