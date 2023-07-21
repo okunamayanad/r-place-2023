@@ -1,6 +1,5 @@
 var Jimp = require('jimp');
 
-
 Jimp.read('place.png', (err, img) => {
     if (err) throw err;
     let output = img.clone();
