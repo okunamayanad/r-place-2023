@@ -40,8 +40,12 @@ jobs:
     # https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
     - name: Upload & release
       uses: mnao305/chrome-extension-upload@v4.0.1
-      # Skip if token is not set
-      if: ${{ secrets.CLIENT_ID && secrets.CLIENT_SECRET && secrets.REFRESH_TOKEN }}
+      env: # Map to environment variables so they are available to the if statement below
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+      # Skip if credentials are not set
+      if: ${{ env.CLIENT_ID && env.CLIENT_SECRET && env.REFRESH_TOKEN && env.REFRESH_TOKEN != ''}}
       with:
         file-path: 'build/chrome-extension.zip'
         # https://chrome.google.com/webstore/developer/dashboard Create a new extension and get the extension id.

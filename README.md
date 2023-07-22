@@ -9,7 +9,7 @@
 - r/place'e girdiğinizde otomatik olarak eklenti etkinleşecektir! 🥳
 
 ### Eklenti Olarak Kurulum
-- [son sürümdeki](/releases/latest) chrome-extension.zip dosyasını indirin.
+- [Son sürümdeki](/releases/latest) chrome-extension.zip dosyasını indirin.
 - İndirdiğiniz dosyayı boş bir klasöre çıkartın.
 - Chrome tarayıcınızın sağ üstündeki üç noktaya tıklayıp "Diğer araçlar" > "Uzantılar" kısmına tıklayın.
 - Sağ üstteki "Geliştirici modu"nu aktif hale getirin.
