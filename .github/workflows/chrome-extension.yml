@@ -25,7 +25,8 @@ jobs:
     # Upload the extension to the artifacts
     - uses: actions/upload-artifact@v3
       with:
-        path: 'build/chrome-extension.zip'
+        name: chrome-extension
+        path: 'chrome-extension'
     
     # Upload the extension to the release
     - name: upload binaries to release
@@ -39,9 +40,13 @@ jobs:
     # https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
     - name: Upload & release
       uses: mnao305/chrome-extension-upload@v4.0.1
+      # Skip if token is not set
+      if: ${{ secrets.CLIENT_ID && secrets.CLIENT_SECRET && secrets.REFRESH_TOKEN }}
       with:
         file-path: 'build/chrome-extension.zip'
-        extension-id: hogefuga(extension id)
+        # https://chrome.google.com/webstore/developer/dashboard Create a new extension and get the extension id.
+        # Upload the extension manually once to get the extension id.
+        extension-id: lgafiioacndmgagmenljhcjckemnkide # Change this if you want to upload to your own extension
         client-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         refresh-token: ${{ secrets.REFRESH_TOKEN }}
