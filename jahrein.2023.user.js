@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         RPlace 2023
+// @name         Jahrein RPlace 2023
 // @namespace    https://okunamayanad.com/
 // @version      1.0
 // @description  Discord: @okunamayand, Github: https://github.com/okunamayanad/r-place-2023
