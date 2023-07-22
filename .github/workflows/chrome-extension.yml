@@ -39,6 +39,7 @@ jobs:
     # Upload the extension to the chrome web store
     # https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
     - name: Upload & release
+      continue-on-error: true
       uses: mnao305/chrome-extension-upload@v4.0.1
       env: # Map to environment variables so they are available to the if statement below
         CLIENT_ID: ${{ secrets.CLIENT_ID }}
