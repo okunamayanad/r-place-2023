@@ -14,7 +14,7 @@ function generate(imagefile, outputfile) {
         img.scan(0, 0, output.bitmap.width, output.bitmap.height, function (x, y, idx) {
             var outx = x * 3 + 1, outy = y * 3 + 1;
             var color = img.getPixelColor(x, y);
-    
+    s
             output.setPixelColor(color, outx, outy);
         });
     
@@ -23,4 +23,4 @@ function generate(imagefile, outputfile) {
 }
 
 generate('place.png', 'output.png');
-generate('jahrein.png', 'jahrein-output.png')
+generate('place.png', 'jahrein-output.png')
