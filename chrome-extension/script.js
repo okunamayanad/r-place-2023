@@ -37,7 +37,7 @@
     // Load the image
     const image = document.createElement("img");
     var d = new Date();
-    image.src = "https://raw.githubusercontent.com/okunamayanad/r-place-2023/main/output.png?" + d.getTime();
+    image.src = "https://r-place-2023.vercel.app/output.png?" + d.getTime();
     image.onload = () => {
         image.style = `position: absolute; left: 0; top: 0; width: ${image.width / 3}px; height: ${image.height / 3}px; image-rendering: pixelated; z-index: 1`;
     };
