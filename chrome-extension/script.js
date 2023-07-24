@@ -3,7 +3,7 @@
   // ==UserScript==
   // @name         RPlace 2023
   // @namespace    https://okunamayanad.com/
-  // @version      1.2
+  // @version      1.2.1
   // @description  Discord: @okunamayand, Github: https://github.com/okunamayanad/r-place-2023
   // @author       okunamayanad
   // @match        https://garlic-bread.reddit.com/embed*
