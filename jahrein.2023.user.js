@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name         RPlace 2023
+// @name         Jahrein RPlace 2023
 // @namespace    https://okunamayanad.com/
-// @version      1.2
+// @version      1.1
 // @description  Discord: @okunamayand, Github: https://github.com/okunamayanad/r-place-2023
 // @author       okunamayanad
 // @match        https://garlic-bread.reddit.com/embed*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        none
 // @license MIT
-// @downloadURL        https://github.com/okunamayanad/r-place-2023/raw/main/RPlace.2023.user.js
-// @updateURL        https://github.com/okunamayanad/r-place-2023/raw/main/RPlace.2023.user.js 
+// @downloadURL        https://github.com/okunamayanad/r-place-2023/raw/main/jahrein.2023.user.js
+// @updateURL        https://github.com/okunamayanad/r-place-2023/raw/main/jahrein.2023.user.js 
 // ==/UserScript==
 console.log("1");
 if (window.top !== window.self) {
@@ -18,7 +18,7 @@ if (window.top !== window.self) {
     // Load the image
     const image = document.createElement("img");
     var d = new Date();
-    image.src = "https://r-place-2023.vercel.app/output.png?" + d.getTime();
+    image.src = "https://r-place-2023.vercel.app/jahrein-output.png?" + d.getTime();
     image.onload = () => {
         image.style = `position: absolute; left: 0; top: 0; width: ${image.width / 3}px; height: ${image.height / 3}px; image-rendering: pixelated; z-index: 1`;
     };
