@@ -11,7 +11,7 @@ These are the real champs! The real people who deserve credit. _(by no specific 
 - [Kn0ax](https://github.com/Kn0ax)
 - [qweeren](https://github.com/qweeren)
 - [Hypenord](https://github.com/Hypenord)
-- humanovan
+- [humanovan](https://humanova.github.io/)
 - [okunamayanad _(me)_](https://redirect.okunamayanad.com)
 
 ### Communities
